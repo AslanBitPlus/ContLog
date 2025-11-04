@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        <th:block th:if="${!isUpdate}">Новая Транс/компания (Владелец авто)</th:block>
+        <th:block th:if="${isUpdate}">Обновление данных Транс/компании (Владельца авто)</th:block>
+    </title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <style>
+        /* Уменьшаем высоту строк и ячеек */
+        table.table tr {
+            height: 26px !important; /* Высота строки */
+        }
+
+        table.table th,
+        table.table td {
+            height: 24px !important; /* Высота ячеек */
+            padding: 4px 10px !important; /* Уменьшаем отступы (2px сверху/снизу, 5px слева/справа) */
+            box-sizing: border-box;
+        }
+
+        /* Уменьшаем ширину левой колонки */
+        table.table th {
+            width: 180px; /* Фиксированная ширина для левой колонки */
+            white-space: nowrap; /* Запрещаем перенос текста */
+        }
+
+        /* Уменьшаем высоту и ширину input */
+        table.table input {
+            height: 22px !important; /* Высота input */
+            width: 120% !important; /* Ширина input (90% от доступной ширины) */
+            padding: 0 5px !important; /* Уменьшаем padding */
+            margin: 0 !important; /* Убираем margin */
+            font-size: 14px !important; /* Уменьшаем размер шрифта */
+            line-height: 1 !important; /* Убираем лишний межстрочный интервал */
+            box-sizing: border-box;
+        }
+
+        /* Уменьшаем высоту div внутри td */
+        table.table td div {
+            height: 20px !important; /* Высота div */
+            line-height: 20px !important; /* Центрируем текст по вертикали */
+            font-size: 14px !important; /* Уменьшаем размер шрифта */
+            box-sizing: border-box;
+        }
+
+        /* Убираем лишние отступы у таблицы */
+        table.table {
+            margin-bottom: 10px !important;
+            width: auto; /* Автоматическая ширина таблицы */
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>
+        <th:block th:if="${!isUpdate}">Новая Транс/компания (Владелец авто)</th:block>
+        <th:block th:if="${isUpdate}">Обновление данных Транс/компании (Владельца авто)</th:block>
+    </h2>
+    <div>
+        <form th:action="${isUpdate} ? '/carriers/update/' + ${carrier.id} : '/carriers/create'" th:object="${carrier}" method="post">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Поле</th>
+                    <th>Значение</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:if="${isUpdate}">
+                    <th>ID</th>
+                    <td><div th:text="${carrier.id}"></div></td>
+                </tr>
+                <tr>
+                    <th>Транс/компания (Владелец авто)</th>
+                    <td><input type="text" th:field="*{name}" /></td>
+                </tr>
+                </tbody>
+            </table>
+            <button type="submit" class="btn btn-primary">Сохранить</button>
+            || <a href="/carriers" class="btn btn-secondary">Отмена</a>
+        </form>
+    </div>
+</div>
+</body>
+</html>

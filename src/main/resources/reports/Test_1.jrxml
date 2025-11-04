@@ -1,0 +1,151 @@
+<!-- Created with Jaspersoft Studio version 7.0.3.final using JasperReports Library version 7.0.3-41034ca841d452f3305ba55b9042260aaa1ab5dd  -->
+<jasperReport name="Test_1" language="java" columnCount="1" pageWidth="595" pageHeight="842" orientation="Landscape" columnWidth="560" leftMargin="20" rightMargin="15" topMargin="10" bottomMargin="10" uuid="cb186bfc-dc3f-4795-9298-d3e80a3426a9">
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<query language="sql"><![CDATA[]]></query>
+	<background splitType="Stretch"/>
+	<title splitType="Stretch">
+		<property name="com.jaspersoft.studio.unit.height" value="px"/>
+	</title>
+	<pageHeader height="378" splitType="Stretch">
+		<element kind="component" uuid="ce9c1b7c-4ddd-47f5-a296-7ea816de14cd" stretchType="NoStretch" x="-6" y="4" width="116" height="79">
+			<component kind="barcode4j:QRCode">
+				<codeExpression><![CDATA["ContLog"]]></codeExpression>
+			</component>
+		</element>
+		<element kind="staticText" uuid="2d0fabfe-e0b5-4c0b-8439-1c4e485e120b" x="117" y="28" width="170" height="16" fontName="DejaVu Sans" fontSize="12.0" pdfEncoding="Identity-H" pdfEmbedded="true" bold="true" hTextAlign="Center" vTextAlign="Top">
+			<text><![CDATA[Акт передачи контейнера]]></text>
+		</element>
+		<element kind="staticText" uuid="7bea61be-e62b-47ab-89c1-6ebedf7ce00a" x="126" y="42" width="153" height="16" fontName="DejaVu Sans" fontSize="9.0" pdfEncoding="Identity-H" pdfEmbedded="true" italic="true" hTextAlign="Center">
+			<text><![CDATA[(Equipment interchange Report)]]></text>
+		</element>
+		<element kind="staticText" uuid="4b06a7eb-3797-4502-bf79-7b5076a1003b" x="0" y="84" width="119" height="17" fontName="DejaVu Sans" fontSize="9.0" pdfFontName="" pdfEncoding="Identity-H" pdfEmbedded="true">
+			<text><![CDATA[Заказчик]]></text>
+		</element>
+		<element kind="staticText" uuid="be0b6f61-79d2-4ec0-a280-6d6f8927e6ef" x="0" y="111" width="120" height="17" fontName="DejaVu Sans" fontSize="9.0" pdfEncoding="Identity-H" pdfEmbedded="true">
+			<text><![CDATA[Номер контейнера]]></text>
+		</element>
+		<element kind="rectangle" uuid="fede2780-13ea-4954-af21-36e7e7527157" x="125" y="80" width="150" height="24">
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+		</element>
+		<element kind="rectangle" uuid="b8374aee-a43b-402e-9cc8-7058d0150d85" x="125" y="108" width="150" height="24"/>
+		<element kind="staticText" uuid="09429d2a-beb1-4bc4-b289-3f1ecb602ce2" x="0" y="139" width="120" height="17" fontName="DejaVu Sans" fontSize="9.0" pdfEncoding="Identity-H" pdfEmbedded="true">
+			<text><![CDATA[Тип, размер]]></text>
+		</element>
+		<element kind="rectangle" uuid="93891c2e-12ea-4d79-beb8-1acf8e085c97" x="125" y="136" width="150" height="24"/>
+		<element kind="staticText" uuid="9ab21151-4adc-4a22-bcc7-3560ae5ebb3c" x="0" y="167" width="120" height="17" fontName="DejaVu Sans" fontSize="9.0" pdfEncoding="Identity-H" pdfEmbedded="true">
+			<text><![CDATA[Состояние]]></text>
+		</element>
+		<element kind="rectangle" uuid="192ca67c-1c52-41b6-8fd1-820fcde7d1b4" x="125" y="164" width="150" height="24"/>
+		<element kind="staticText" uuid="aa4b47d6-8703-4860-95aa-3b6e397a5bd4" x="0" y="195" width="120" height="17" fontName="DejaVu Sans" fontSize="9.0" pdfEncoding="Identity-H" pdfEmbedded="true">
+			<text><![CDATA[Повреждения]]></text>
+		</element>
+		<element kind="rectangle" uuid="08aa5d10-7731-4f1b-9afa-661dd7250b37" x="125" y="192" width="150" height="24"/>
+		<element kind="staticText" uuid="71c90eab-387e-411b-a7c0-951f42d97c21" x="0" y="223" width="120" height="17" fontName="DejaVu Sans" fontSize="9.0" pdfEncoding="Identity-H" pdfEmbedded="true">
+			<text><![CDATA[Вес брутто, кг]]></text>
+		</element>
+		<element kind="rectangle" uuid="d3296f6b-737a-47d4-b0cf-46cb92c57237" x="125" y="220" width="150" height="24"/>
+		<element kind="staticText" uuid="dcb22a86-6138-461f-b7dc-ec5319a36f62" x="0" y="251" width="120" height="17" fontName="DejaVu Sans" fontSize="9.0" pdfEncoding="Identity-H" pdfEmbedded="true">
+			<text><![CDATA[Направление]]></text>
+		</element>
+		<element kind="rectangle" uuid="5ef9de3b-709c-45e4-b849-b9e0fe6cc317" x="125" y="248" width="150" height="24"/>
+		<element kind="staticText" uuid="e67723f3-f435-404a-9453-4efbaafe9f06" x="279" y="84" width="116" height="17" fontName="DejaVu Sans" fontSize="9.0" pdfEncoding="Identity-H" pdfEmbedded="true">
+			<text><![CDATA[Наименование груза]]></text>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+		</element>
+		<element kind="staticText" uuid="a89677d4-5da8-4666-b901-653abd7d1c07" x="279" y="112" width="117" height="17" fontName="DejaVu Sans" fontSize="9.0" pdfEncoding="Identity-H" pdfEmbedded="true">
+			<text><![CDATA[Температурный режим]]></text>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+		</element>
+		<element kind="rectangle" uuid="5eb66d01-a139-4ed6-aedb-6af487606d58" x="400" y="81" width="150" height="24">
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+		</element>
+		<element kind="rectangle" uuid="17cfd8df-0726-4e81-8162-f6dbd31b7dad" x="400" y="109" width="150" height="24">
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+		</element>
+		<element kind="staticText" uuid="db3b1dfa-6f06-4515-8003-5a049d618b58" x="279" y="140" width="117" height="17" fontName="DejaVu Sans" fontSize="9.0" pdfEncoding="Identity-H" pdfEmbedded="true">
+			<text><![CDATA[ЗПУ]]></text>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+		</element>
+		<element kind="rectangle" uuid="3873a7cd-3946-487e-b061-68effc6101ef" x="400" y="137" width="150" height="24">
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+		</element>
+		<element kind="staticText" uuid="08a1a0e2-dff3-43c8-99ef-fe3a068853d1" x="279" y="168" width="117" height="17" fontName="DejaVu Sans" fontSize="9.0" pdfEncoding="Identity-H" pdfEmbedded="true">
+			<text><![CDATA[Номер авто]]></text>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+		</element>
+		<element kind="rectangle" uuid="c16713c9-7ca3-48ef-8218-6019563db6a7" x="400" y="165" width="150" height="24">
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+		</element>
+		<element kind="staticText" uuid="7de9b242-d779-4708-a39a-c2666a3102aa" x="279" y="196" width="117" height="17" fontName="DejaVu Sans" fontSize="9.0" pdfEncoding="Identity-H" pdfEmbedded="true">
+			<text><![CDATA[Водитель]]></text>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+		</element>
+		<element kind="rectangle" uuid="7d81b2c5-59b5-493e-ba1d-29c07a0a02d0" x="400" y="193" width="150" height="24">
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+		</element>
+		<element kind="staticText" uuid="78f82f74-3b28-4f81-8856-3b78d1ccedbc" x="279" y="224" width="117" height="17" fontName="DejaVu Sans" fontSize="9.0" pdfEncoding="Identity-H" pdfEmbedded="true">
+			<text><![CDATA[Релиз / Букинг]]></text>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+		</element>
+		<element kind="rectangle" uuid="d61f9e21-d0c6-49f1-b87b-2827cbab7c70" x="400" y="221" width="150" height="24">
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+		</element>
+		<element kind="staticText" uuid="8f9d1ebd-8692-421f-b801-51a4ef8c0194" x="279" y="252" width="117" height="17" fontName="DejaVu Sans" fontSize="9.0" pdfEncoding="Identity-H" pdfEmbedded="true">
+			<text><![CDATA[Под флекситанки]]></text>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+		</element>
+		<element kind="rectangle" uuid="f6fb4be2-cd52-4eb6-b37e-e53bc102f2cf" x="400" y="249" width="150" height="24">
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+		</element>
+		<element kind="staticText" uuid="a940aeff-f231-4c94-842d-24ef2e12ee03" x="120" y="280" width="300" height="15" fontName="DejaVu Sans" pdfFontName="" pdfEncoding="Identity-H" pdfEmbedded="true" hTextAlign="Center">
+			<text><![CDATA[Схематическое изображение мест повреждений контейнера]]></text>
+		</element>
+		<element kind="staticText" uuid="f45ff0ac-2bf4-42b2-a8ff-529dd178ade0" x="78" y="4" width="475" height="17" fontName="DejaVu Sans" fontSize="9.0" pdfEncoding="Identity-H" pdfEmbedded="true" hTextAlign="Center">
+			<text><![CDATA[ООО ТТ-Урал / ИНН 6678087190 / Московская область, Богородский городской округ, Электроугли]]></text>
+		</element>
+		<element kind="line" uuid="28670099-e55e-4078-9205-875345047475" x="322" y="40" width="65" height="1">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+		</element>
+		<element kind="staticText" uuid="35b18aad-e164-403c-b9cb-356487182420" x="306" y="27" width="20" height="13" fontName="DejaVu Sans" pdfEncoding="Identity-H" pdfEmbedded="true">
+			<text><![CDATA[№]]></text>
+		</element>
+		<element kind="staticText" uuid="7823773a-a72a-45ad-9cd7-f204d35c43d1" x="326" y="26" width="61" height="13" fontName="DejaVu Sans" pdfEncoding="Identity-H" pdfEmbedded="true" hTextAlign="Center">
+			<text><![CDATA[OUT 2513]]></text>
+		</element>
+		<element kind="staticText" uuid="caceb453-9880-46e3-a145-0aa712a4916a" x="327" y="42" width="61" height="13" fontName="DejaVu Sans" pdfEncoding="Identity-H" pdfEmbedded="true" hTextAlign="Center">
+			<text><![CDATA[324294]]></text>
+		</element>
+		<element kind="staticText" uuid="200baf23-df85-4b0b-b0c8-5db8ec80a207" x="387" y="27" width="63" height="13" fontName="DejaVu Sans" pdfEncoding="Identity-H" pdfEmbedded="true">
+			<text><![CDATA[составлен]]></text>
+		</element>
+		<element kind="line" uuid="5191d4be-a53f-4503-bf72-d23a7ae2e580" x="454" y="40" width="101" height="1">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="textField" uuid="3f744657-b97c-432f-859a-a6325f5411f1" x="450" y="25" width="105" height="14" fontName="DejaVu Sans" pdfEncoding="Identity-H" pattern="dd.MM.yyyy" pdfEmbedded="true" hTextAlign="Center">
+			<expression><![CDATA[new java.util.Date()]]></expression>
+		</element>
+		<element kind="line" uuid="2c55ffb5-5f5d-42a3-967e-6d4cafa78d41" x="85" y="16" width="460" height="1">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+		</element>
+		<property name="com.jaspersoft.studio.unit.height" value="px"/>
+	</pageHeader>
+	<columnHeader splitType="Stretch">
+		<property name="com.jaspersoft.studio.unit.height" value="px"/>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch"/>
+	</detail>
+	<columnFooter height="45" splitType="Stretch"/>
+	<pageFooter height="54" splitType="Stretch"/>
+	<summary height="42" splitType="Stretch"/>
+</jasperReport>

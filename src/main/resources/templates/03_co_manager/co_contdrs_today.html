@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Заявки</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
+    <script src="js/st_script.js" defer></script>
+
+    <style>
+        /* Уменьшаем высоту строк и ячеек */
+        table.table tr {
+            height: 26px !important; /* Высота строки */
+        }
+
+        table.table th,
+        table.table td {
+            height: 24px !important; /* Высота ячеек */
+            padding: 4px 10px !important; /* Уменьшаем отступы (2px сверху/снизу, 5px слева/справа) */
+            box-sizing: border-box;
+        }
+    </style>
+
+</head>
+<body>
+
+<div class="container">
+    <h2>Заявки на Сегодня</h2>
+    <h5>
+        <th:block th:text="'Владелец КТК: ' +${contOwnerName}"></th:block>
+    </h5>
+    <form class="form-inline mb-3">
+        <input class="form-control mr-sm-2" type="text" id="searchInput" placeholder="Поиск заявки" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="button">Поиск</button>
+    </form>
+    <a href="/co_contdrses">Все Заявки</a> | <a href="/co_contdrses/today">Заявки на Сегодня</a> | <a href="/co_contdrses/fromto">Заявки на ...</a> | <a href="/main">Главная страница</a>
+
+    <table class="table table-striped table-bordered" id="usersTable">
+        <!--    <table class="table">-->
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Заявка №</th>
+            <th>Дата рег-ции </th>
+            <th>Сток </th>
+            <th>КТК </th>
+            <th>Дата с ...</th>
+            <th>Дата по ...</th>
+            <th>Перевозчик</th>
+            <th>Прием/Выдача</th>
+            <th>Груж/Пор</th>
+            <!--            <th>Вес КТК (Тара)</th>-->
+            <!--            <th>Вес КТК (Нетто)</th>-->
+            <!--            <th>Вес КТК (Брутто)</th>-->
+            <th>Перемещ/Старт/Финиш</th>
+            <th>Состояние КТК (d-,r-,s-,t-)</th>
+            <!--            <th>КТК</th>-->
+            <!--            <th>Терминал из...</th>-->
+            <!--            <th>Терминал в...</th>-->
+<!--            <th>Правка</th>-->
+<!--            <th>Удаление</th>-->
+        </tr>
+
+        </thead>
+        <tbody>
+        <tr th:each = "contdrs : ${contdrses}">
+            <td th:text = "${contdrs.id}"></td>
+            <td th:text = "${contdrs.sale.id} + ' от ' + ${#temporals.format(contdrs.sale.fromDate, 'dd.MM.yyyy')}"></td>
+            <td th:text="${#temporals.format(contdrs.dateReg, 'dd.MM.yyyy HH:mm')}"></td>
+
+            <td th:text = "${contdrs.sale.contowner != null} ? ${contdrs.sale.contowner.name} : 'Нет'"></td>
+            <td th:text = "${contdrs.sale.container != null} ? ${contdrs.sale.container.code} + ' ' + ${contdrs.sale.container.number} : 'Нет'"></td>
+
+            <td th:text="${#temporals.format(contdrs.dateFrom, 'dd.MM.yyyy')}"></td>
+            <td th:text="${#temporals.format(contdrs.dateTo, 'dd.MM.yyyy')}"></td>
+
+            <td th:text = "${contdrs.carrier != null} ? ${contdrs.carrier.name} : 'Нет'"></td>
+
+            <!--            <td th:text = "${contdrs.io}"></td>-->
+            <td th:switch="${contdrs.io}">
+                <p th:case="0">Перем</p>
+                <p th:case="-1">Прием</p>
+                <p th:case="1">Выдача</p>
+            </td>
+
+            <!--            <td th:text = "${contdrs.w}"></td>-->
+            <td th:text="${contdrs.w == -1} ? 'Порож' : 'Груж'"></td>
+
+            <!--            <td th:text = "${contdrs.weightT}"></td>-->
+            <!--            <td th:text = "${contdrs.weightN}"></td>-->
+            <!--            <td th:text = "${contdrs.weightB}"></td>-->
+
+            <!--            <td th:text = "${contdrs.typeDrs}"></td>-->
+            <td th:switch="${contdrs.typeDrs}">
+                <p th:case="0">Перем</p>
+                <p th:case="-1">Финиш</p>
+                <p th:case="1">Старт</p>
+            </td>
+
+            <!--            <td th:text = "${contdrs.drs}"></td>-->
+            <td th:switch="${contdrs.drs}">
+                <p th:case="d">Авто</p>
+                <p th:case="r">Ж/д</p>
+                <p th:case="s">Sea</p>
+                <p th:case="t">Терм</p>
+            </td>
+
+            <!--            <td th:text = "${contdrs.container.code} + ${contdrs.container.number}"></td>-->
+
+            <!--            <td th:text = "${contdrs.fromTerminal.shortname}"></td>-->
+            <!--            <td th:text = "${contdrs.toTerminal.shortname}"></td>-->
+
+<!--            <td><a href="/co_contdrses" th:href="@{/co_contdrses/update/__${contdrs.id}__}">Обновить</a></td>-->
+<!--            <td><a href="/co_contdrses" th:href="@{/co_contdrses/delete/__${contdrs.id}__}"-->
+<!--                   onclick="return confirm('Вы уверены, что хотите удалить эту Заявку DRS?');">-->
+<!--                Удалить-->
+<!--            </a>-->
+<!--            </td>-->
+        </tr>
+        </tbody>
+    </table>
+
+
+</div>
+
+
+</body>
+</html>

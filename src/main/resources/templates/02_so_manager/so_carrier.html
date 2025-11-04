@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Транспортные компании (Владельцы авто)</title>
+    <!--    <link rel="stylesheet" href="css/styles.css">-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <!--    <link rel="stylesheet" href="css/main.css">-->
+
+    <script src="js/st_script.js" defer></script>
+
+    <style>
+        /* Уменьшаем высоту строк и ячеек */
+        table.table tr {
+            height: 26px !important; /* Высота строки */
+        }
+
+        table.table th,
+        table.table td {
+            height: 24px !important; /* Высота ячеек */
+            padding: 4px 10px !important; /* Уменьшаем отступы (2px сверху/снизу, 5px слева/справа) */
+            box-sizing: border-box;
+        }
+    </style>
+
+</head>
+
+<body>
+
+<div class="container">
+    <h2>Транспортные компании (Владельцы авто)</h2>
+    <form class="form-inline mb-3">
+        <input class="form-control mr-sm-2" type="text" id="searchInput" placeholder="Поиск Транс/компании" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="button">Поиск</button>
+    </form>
+    <a href="/main">Главная страница</a>
+    <table class="table table-striped table-bordered" id="usersTable">
+        <!--    <table class="table">-->
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Название транс/компании (Владельца авто)</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each = "carrier : ${carriers}">
+            <td th:text = "${carrier.id}"></td>
+            <td th:text = "${carrier.name}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Функция для фильтрации таблицы
+        function filterTable() {
+            var input, filter, table, tr, td, i, j;
+            input = document.getElementById("searchInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("usersTable");
+            tr = table.getElementsByTagName("tr");
+
+            // Проходим по всем строкам таблицы
+            for (i = 0; i < tr.length; i++) {
+                tr[i].style.display = "";
+                tds = tr[i].getElementsByTagName("td");
+
+                // Проверяем все ячейки строки
+                for (j = 0; j < tds.length; j++) {
+                    if (tds[j].innerHTML.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                        break;
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+
+        // Добавляем обработчик события на ввод в поле поиска
+        document.getElementById("searchInput").addEventListener('keyup', function() {
+            filterTable();
+        });
+    });
+</script>
+
+</body>
+</html>

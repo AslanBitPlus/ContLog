@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="6a701cde-4593-4bf5-b449-3460f0e87a06" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/git_toolbox_blame.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Test_1.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ContLog/Autoroty.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ContLog/ContLogApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ContLog/DataLoader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ContLog/config/HibernateConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ContLog/controller/AdminController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ContLog/controller/AuthController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ContLog/controller/CarrierController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ContLog/controller/ContainerController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ContLog/controller/ContainerdrsController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ContLog/controller/ContownerController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ContLog/controller/DriverController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ContLog/controller/ErrorController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ContLog/controller/RegistrationController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ContLog/controller/TerminalController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ContLog/controller/co/CoController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ContLog/controller/dr/DrController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ContLog/controller/si/SiController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ContLog/controller/so/SoController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ContLog/controller/tc/TcController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ContLog/controller/tr/TrController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ContLog/controller/us/UsController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ContLog/entity/Carrier.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ContLog/entity/Container.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ContLog/entity/Containerdrs.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ContLog/entity/Contowner.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ContLog/entity/Driver.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ContLog/entity/Role.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ContLog/entity/Sale.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ContLog/entity/SaleDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ContLog/entity/Terminal.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ContLog/entity/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ContLog/repository/CarrierRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ContLog/repository/ContainerRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ContLog/repository/ContainerdrsRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ContLog/repository/ContownerRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ContLog/repository/DriverRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ContLog/repository/RoleRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ContLog/repository/SaleRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ContLog/repository/TerminalRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ContLog/repository/UserRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ContLog/security/SecurityConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ContLog/service/CarrierService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ContLog/service/ContainerService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ContLog/service/ContainerdrsService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ContLog/service/ContownerService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ContLog/service/CustomUserDetailsService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ContLog/service/DriverService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ContLog/service/SaleService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ContLog/service/TerminalService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ContLog/view/ContainerView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/templates/04_tr_manager/js/st_script.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/reports/Test_1.jasper" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/reports/Test_1.jrxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/reports/containers_report.jrxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/reports/tc_contDrsAllReport.jrxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/custom.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/styles.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/table-styles.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/st_script.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/01_si_manager/si_sale.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/01_si_manager/si_sale_crud.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/01_si_manager/si_sale_today.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/02_so_manager/so_carrier.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/02_so_manager/so_contdrs.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/02_so_manager/so_contdrs_crud.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/02_so_manager/so_contdrses_today.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/03_co_manager/co_container.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/03_co_manager/co_container_a.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/03_co_manager/co_container_crud.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/03_co_manager/co_container_place.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/03_co_manager/co_container_t.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/03_co_manager/co_contdrs.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/03_co_manager/co_contdrs_fromto.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/03_co_manager/co_contdrs_today.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/03_co_manager/co_main.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/03_co_manager/co_monitor.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/03_co_manager/co_service.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/04_tr_manager/tr_container.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/04_tr_manager/tr_contdrs.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/04_tr_manager/tr_contdrs_crud.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/05_driver/dr_contdrs.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/05_driver/dr_main.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/06_driver/dr_main.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/07_tc_manager/tc_contdrs.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/07_tc_manager/tc_contdrs_crud.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/07_tc_manager/tc_contdrs_month.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/07_tc_manager/tc_contdrs_week.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/07_tc_manager/tc_driver.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/07_tc_manager/tc_driver_crud.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/07_tc_manager/tc_monitor.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/07_tc_manager/tc_service.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/07_user/about.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/07_user/contacts.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/07_user/service.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/07_user/us_main.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/admin/editUser.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/admin/profile.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/admin/users.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/admin/userscrud.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/admin/userslist.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/carrier/crud.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/carrier/list.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/container/crud.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/container/list.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/contowner/crud.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/contowner/list.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/driver/crud.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/driver/list.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/error/403.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/error/404.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/error/500.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/login.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/main.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/profile.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/register.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/terminal/crud.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/terminal/list.html" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="HTML File" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitToolBoxStore">
+    <option name="recentBranches">
+      <RecentBranches>
+        <option name="branchesForRepo">
+          <list>
+            <RecentBranchesForRepo>
+              <option name="branches">
+                <list>
+                  <RecentBranch>
+                    <option name="branchName" value="main" />
+                    <option name="lastUsedInstant" value="1762269508" />
+                  </RecentBranch>
+                  <RecentBranch>
+                    <option name="branchName" value="master" />
+                    <option name="lastUsedInstant" value="1762269507" />
+                  </RecentBranch>
+                </list>
+              </option>
+              <option name="repositoryRootUrl" value="file://$PROJECT_DIR$" />
+            </RecentBranchesForRepo>
+          </list>
+        </option>
+      </RecentBranches>
+    </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
+  <component name="ProjectId" id="2tnCW8hR8r0lDPdPEoxU6OtuRz1" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Application.ContLogApplication.executor": "Run",
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Aslan/IdeaProjects/FW_Spring/ContLog/src/main/resources/reports",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Aslan\IdeaProjects\FW_Spring\ContLog\src\main\resources\reports" />
+      <recent name="C:\Users\Aslan\IdeaProjects\FW_Spring\ContLog\src\main\resources\templates\04_tr_manager" />
+      <recent name="C:\Users\Aslan\IdeaProjects\FW_Spring\ContLog\src\main\resources\templates\05_driver" />
+      <recent name="C:\Users\Aslan\IdeaProjects\FW_Spring\ContLog\src\main\resources\templates\03_co_manager" />
+      <recent name="C:\Users\Aslan\IdeaProjects\FW_Spring\ContLog\src\main\resources\fonts" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Aslan\IdeaProjects\FW_Spring\ContLog" />
+      <recent name="C:\Users\Aslan\IdeaProjects\FW_Spring\ContLog\src\main\resources\templates" />
+      <recent name="C:\Users\Aslan\IdeaProjects\FW_Spring\ContLog\src\main\resources\static\css" />
+      <recent name="C:\Users\Aslan\IdeaProjects\FW_Spring\ContLog\src\main\resources\templates\driver" />
+      <recent name="C:\Users\Aslan\IdeaProjects\FW_Spring\ContLog\src\main\resources\templates\admin" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6a701cde-4593-4bf5-b449-3460f0e87a06" name="Changes" comment="" />
+      <created>1740978481024</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1740978481024</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="org.springframework.web.util.pattern.PatternParseException" package="org.springframework.web.util.pattern" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="org.springframework.data.mapping.PropertyReferenceException" package="org.springframework.data.mapping" />
+          <option name="timeStamp" value="2" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

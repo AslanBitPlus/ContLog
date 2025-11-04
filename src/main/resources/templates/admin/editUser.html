@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Правка Пользователя</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+          crossorigin="anonymous">
+    <style>
+        /* Уменьшаем высоту строк и ячеек */
+        table.table tr {
+            height: 26px !important; /* Высота строки */
+        }
+
+        table.table th,
+        table.table td {
+            height: 24px !important; /* Высота ячеек */
+            padding: 4px 10px !important; /* Уменьшаем отступы (2px сверху/снизу, 5px слева/справа) */
+            box-sizing: border-box;
+        }
+    </style>
+
+</head>
+<body>
+
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="text-center">Редактирование Пользователя</h2>
+                </div>
+                <div class="card-body">
+<!--        <form th:action="@{/admin/users/{id}/update(id=${user.id})}" method="post">-->
+                    <form th:action="'/admin/users/update/' + ${user.id}" method="post">
+                        <div class="form-group mb-3">
+                            <label for="username">Логин:</label>
+                            <input type="text" name="username" th:value="${user.username}" class="form-control" id="username">
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="email">Email:</label>
+                            <input type="email" name="email" th:value="${user.email}" class="form-control" id="email">
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="password">Новый пароль:</label>
+                            <input type="password" name="password" class="form-control" id="password">
+                            <small class="form-text text-muted">Оставьте пустым, если не нужно менять</small>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="role">Выбрать роль:</label>
+                            <select name="role" class="form-control" id="role">
+                                <option th:each="role : ${roles}"
+                                    th:value="${role.name}"
+                                    th:text="${role.name}"
+                                    th:selected="${role.name == user.roles[0].name}">
+                                </option>
+                            </select>
+                        </div>
+
+<!--                        <div class="form-group mb-3">-->
+<!--                            <label for="cod">Организация:</label>-->
+<!--                            <input type="number" name="cod" th:value="${user.cod}" class="form-control" id="cod">-->
+<!--                        </div>-->
+
+<!--                    =====================================================-->
+<!--                    Выбор организации -->
+                        <div class="form-group mb-3">
+                            <label for="organization">Организация:</label>
+                            <select name="cod" class="form-control" id="organization">
+                                <option value="">-- загрузка... --</option>
+                            </select>
+                        </div>
+<!--                    =====================================================-->
+
+                        <div class="form-group mb-3">
+                            <button type="submit" class="btn btn-primary"
+                                onclick="return confirm('Вы уверены, что хотите обновить данные Пользователя?');">
+                                Обновить
+                            </button> || <a href="/admin/users" class="btn btn-secondary">Отмена</a>
+                        </div>
+                    </form>
+
+<!--                    =====================================================-->
+<!--                    Скрытый блок для выбора организаций по ролям-->
+                    <div style="display: none;">
+                    <select id="terminalsOptions" class="hidden-select" aria-hidden="true">
+                        <option th:each="term : ${terminals}"
+                                th:value="${term.id}"
+                                th:text="${term.shortName}"></option>
+                    </select>
+
+                    <select id="carriersOptions" class="hidden-select" aria-hidden="true">
+                        <option th:each="c : ${carriers}"
+                                th:value="${c.id}"
+                                th:text="${c.name}"></option>
+                    </select>
+
+                    <select id="contownersOptions" class="hidden-select" aria-hidden="true">
+                        <option th:each="co : ${contowners}"
+                                th:value="${co.id}"
+                                th:text="${co.name}"></option>
+                    </select>
+
+                        <select id="driversOptions" class="hidden-select" aria-hidden="true">
+                            <option th:each="dr : ${drivers}"
+                                    th:value="${dr.id}"
+                                    th:text="${dr.surename} + ' '
+                                    + ${dr.name} + ' '
+                                    + ${dr.patronymic}" ></option>
+                        </select>
+                    </div>
+<!--                    =====================================================-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--                    =====================================================-->
+<script th:inline="javascript">
+    (function () {
+        const roleSelect = document.getElementById('role');
+        const orgSelect = document.getElementById('organization');
+        const terminalsOptions = document.getElementById('terminalsOptions');
+        const carriersOptions = document.getElementById('carriersOptions');
+        const contownersOptions = document.getElementById('contownersOptions');
+        const driversOptions = document.getElementById('driversOptions');
+
+        // Значение cod . Если null -> ''
+        const initialCod = /*[[${user.cod != null ? user.cod : '""'}]]*/;
+
+        const zeroRoles = ['ROLE_SI_MANAGER', 'ROLE_SO_MANAGER', 'ROLE_USER', 'ROLE_SUPERADMIN'];
+
+        function setOptionsFrom(selectSource) {
+            orgSelect.innerHTML = selectSource.innerHTML;
+
+            if (!orgSelect.querySelector('option[value=""]')) {
+                const placeholder = document.createElement('option');
+                placeholder.value = '';
+                placeholder.textContent = 'Выберите организацию';
+                orgSelect.insertBefore(placeholder, orgSelect.firstChild);
+            }
+
+            // небольшая задержка — чтобы DOM успел обновиться
+            setTimeout(() => {
+                if (initialCod && orgSelect.querySelector('option[value="' + initialCod + '"]')) {
+                    orgSelect.value = initialCod;
+                } else if (zeroRoles.includes(roleSelect.value)) {
+                    orgSelect.value = '0';
+                } else {
+                    orgSelect.value = '';
+                }
+            }, 0);
+        }
+
+        function updateOrgOptionsByRole(roleName) {
+            if (!roleName) {
+                orgSelect.innerHTML = '<option value="">Выберите роль</option>';
+                return;
+            }
+
+            if (zeroRoles.includes(roleName)) {
+                orgSelect.innerHTML = '<option value="0">Нет организации</option>';
+                orgSelect.value = '0';
+                return;
+            }
+
+            if (roleName === 'ROLE_TR_MANAGER') setOptionsFrom(terminalsOptions);
+            else if (roleName === 'ROLE_TC_MANAGER') setOptionsFrom(carriersOptions);
+            else if (roleName === 'ROLE_CO_MANAGER') setOptionsFrom(contownersOptions);
+            else if (roleName === 'ROLE_DRIVER') setOptionsFrom(driversOptions);
+            else {
+                orgSelect.innerHTML = '<option value="0">Нет доступных организаций</option>';
+                orgSelect.value = '0';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            updateOrgOptionsByRole(roleSelect.value);
+            roleSelect.addEventListener('change', function () {
+                updateOrgOptionsByRole(this.value);
+            });
+        });
+    })();
+</script>
+<!--                    =====================================================-->
+
+</body>
+</html>

@@ -1,0 +1,172 @@
+<!-- Created with Jaspersoft Studio version 7.0.3.final using JasperReports Library version 7.0.3-41034ca841d452f3305ba55b9042260aaa1ab5dd  -->
+<jasperReport name="Blank_A4" language="java" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c4cfcfc1-a0c7-4454-b6f4-6c1cc5b70bfa">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Список КТК"/>
+	<parameter name="Title1" class="java.lang.String"/>
+	<parameter name="Title2" class="java.lang.String"/>
+	<parameter name="contOwnerName" class="java.lang.String"/>
+	<parameter name="contCount" class="java.lang.Integer"/>
+	<field name="id" class="java.lang.Long"/>
+	<field name="code" class="java.lang.String"/>
+	<field name="number" class="java.lang.String"/>
+	<field name="type" class="java.lang.String"/>
+	<field name="w" class="java.lang.Integer"/>
+	<field name="placeName" class="java.lang.String"/>
+	<background splitType="Stretch"/>
+	<title height="65" splitType="Stretch">
+		<element kind="component" uuid="5a1dd233-20ac-4471-9cb8-afa00d5bfc32" x="0" y="0" width="81" height="65">
+			<component kind="barcode4j:QRCode">
+				<codeExpression><![CDATA["ContLog"]]></codeExpression>
+			</component>
+		</element>
+		<element kind="textField" uuid="17a29492-abdb-4158-a32c-a5e0c7824a3b" x="80" y="12" width="475" height="20" fontName="DejaVu Sans" fontSize="16.0" bold="true" hTextAlign="Center">
+			<expression><![CDATA[$P{Title1}]]></expression>
+			<property name="com.jaspersoft.studio.unit.x" value="px"/>
+			<property name="com.jaspersoft.studio.unit.y" value="px"/>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="textField" uuid="ab3dc061-f804-472d-9f73-d111c33e758b" x="80" y="34" width="475" height="15" fontName="DejaVu Sans" fontSize="11.0" bold="true" hTextAlign="Center">
+			<expression><![CDATA[$P{Title2}]]></expression>
+			<property name="com.jaspersoft.studio.unit.x" value="px"/>
+			<property name="com.jaspersoft.studio.unit.y" value="px"/>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<property name="com.jaspersoft.studio.unit.height" value="px"/>
+	</title>
+	<pageHeader height="20" splitType="Stretch">
+		<element kind="line" uuid="b1108934-7a02-433a-bc69-e3dde2987313" x="0" y="19" width="555" height="1">
+			<property name="com.jaspersoft.studio.unit.x" value="px"/>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<property name="com.jaspersoft.studio.unit.y" value="px"/>
+		</element>
+		<element kind="textField" uuid="c6af795a-5193-45b5-92ce-edc2f4bc6068" x="450" y="0" width="100" height="14" fontName="DejaVu Sans" pattern="dd.MM.yyyy" bold="false">
+			<expression><![CDATA[new java.util.Date()]]></expression>
+			<property name="com.jaspersoft.studio.unit.x" value="px"/>
+			<property name="com.jaspersoft.studio.unit.y" value="px"/>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="textField" uuid="0a11147c-5097-43e0-89f3-88c6d2032939" x="16" y="0" width="280" height="14" forecolor="#000000" fontName="DejaVu Sans" bold="false" hTextAlign="Left">
+			<expression><![CDATA["Сток :" + $P{contOwnerName} + " - [" + $P{contCount} + "]"]]></expression>
+			<property name="com.jaspersoft.studio.unit.x" value="px"/>
+			<property name="com.jaspersoft.studio.unit.y" value="px"/>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<property name="com.jaspersoft.studio.unit.height" value="px"/>
+	</pageHeader>
+	<columnHeader height="25" splitType="Stretch">
+		<element kind="staticText" uuid="e2eedf00-0a5b-43f5-b242-8689d6c501b3" x="0" y="0" width="40" height="23" fontName="DejaVu Sans" bold="true" hTextAlign="Center" vTextAlign="Middle">
+			<text><![CDATA[Id]]></text>
+			<property name="com.jaspersoft.studio.unit.x" value="px"/>
+			<property name="com.jaspersoft.studio.unit.y" value="px"/>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="staticText" uuid="6ae9520c-655b-44bc-bbdf-d963d49d338c" x="40" y="0" width="80" height="23" fontName="DejaVu Sans" bold="true" hTextAlign="Center" vTextAlign="Middle">
+			<text><![CDATA[Код]]></text>
+			<property name="com.jaspersoft.studio.unit.x" value="px"/>
+			<property name="com.jaspersoft.studio.unit.y" value="px"/>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="staticText" uuid="66bbcd92-fab4-45a2-a153-b1aca51c3078" x="120" y="0" width="80" height="23" fontName="DejaVu Sans" bold="true" hTextAlign="Center" vTextAlign="Middle">
+			<text><![CDATA[Номер]]></text>
+			<property name="com.jaspersoft.studio.unit.x" value="px"/>
+			<property name="com.jaspersoft.studio.unit.y" value="px"/>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="line" uuid="272ed33b-8c1a-40e9-a982-28e87348b92f" x="0" y="24" width="555" height="1">
+			<property name="com.jaspersoft.studio.unit.x" value="px"/>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<property name="com.jaspersoft.studio.unit.y" value="px"/>
+		</element>
+		<element kind="staticText" uuid="9e16e0ab-372d-4a35-bdfd-aff87a6eb8aa" x="200" y="0" width="50" height="23" fontName="DejaVu Sans" bold="true" hTextAlign="Center" vTextAlign="Middle">
+			<text><![CDATA[Тип]]></text>
+			<property name="com.jaspersoft.studio.unit.x" value="px"/>
+			<property name="com.jaspersoft.studio.unit.y" value="px"/>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="staticText" uuid="9e404d53-9c54-4272-87c7-295ddb45541c" x="260" y="0" width="55" height="23" fontName="DejaVu Sans" bold="true" hTextAlign="Center" vTextAlign="Middle">
+			<text><![CDATA[Гр/Пор]]></text>
+			<property name="com.jaspersoft.studio.unit.x" value="px"/>
+			<property name="com.jaspersoft.studio.unit.y" value="px"/>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="staticText" uuid="7876a39e-18d8-4d59-abb9-59178a51e3ed" x="320" y="0" width="235" height="23" fontName="DejaVu Sans" bold="true" hTextAlign="Center" vTextAlign="Middle">
+			<text><![CDATA[Место нахождения КТК]]></text>
+			<property name="com.jaspersoft.studio.unit.x" value="px"/>
+			<property name="com.jaspersoft.studio.unit.y" value="px"/>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<property name="com.jaspersoft.studio.unit.height" value="px"/>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<element kind="textField" uuid="7d6fcf7a-7e69-4d4e-873f-d0f414933dfc" x="0" y="0" width="40" height="18" fontName="DejaVu Sans" hTextAlign="Right">
+				<expression><![CDATA[$F{id}]]></expression>
+				<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="textField" uuid="63c991fc-82b2-49d5-8d6c-67a4b9a6fc05" x="40" y="0" width="80" height="18" fontName="DejaVu Sans" hTextAlign="Center">
+				<expression><![CDATA[$F{code}]]></expression>
+				<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			</element>
+			<element kind="textField" uuid="c724be82-884c-4a49-9be0-87c830caebe0" x="120" y="0" width="80" height="18" fontName="DejaVu Sans" hTextAlign="Center">
+				<expression><![CDATA[$F{number}]]></expression>
+				<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			</element>
+			<element kind="line" uuid="fcb71b54-6b4e-4be7-94f1-9194ad3d9890" x="0" y="19" width="555" height="1">
+				<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<property name="com.jaspersoft.studio.unit.y" value="px"/>
+			</element>
+			<element kind="textField" uuid="c7a5a771-96f5-47d1-a977-0c6fe765b32f" x="200" y="0" width="50" height="18" fontName="DejaVu Sans" hTextAlign="Center">
+				<expression><![CDATA[$F{type}]]></expression>
+				<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			</element>
+			<element kind="textField" uuid="9eca0eb2-fd95-4159-8bd7-b37c4ec39d33" x="260" y="0" width="55" height="18" fontName="DejaVu Sans" hTextAlign="Center">
+				<expression><![CDATA[($F{w} == 1) ? "Гр." : "Пор."]]></expression>
+				<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			</element>
+			<element kind="textField" uuid="3166016e-7623-4a0c-9f80-a815e59ffee3" x="320" y="0" width="235" height="18" fontName="DejaVu Sans" hTextAlign="Left">
+				<expression><![CDATA[$F{placeName}]]></expression>
+				<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			</element>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</band>
+	</detail>
+	<columnFooter height="45" splitType="Stretch"/>
+	<pageFooter height="20" splitType="Stretch">
+		<element kind="textField" uuid="cdd3168c-2289-49ab-94ad-1b4b4c832902" x="360" y="0" width="100" height="19" fontName="DejaVu Sans" evaluationTime="Page" hTextAlign="Right">
+			<expression><![CDATA["Стр. " + $V{PAGE_NUMBER}]]></expression>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="textField" uuid="990a0eb5-5d7c-4518-96fa-3981128f3b9b" x="465" y="0" width="100" height="19" fontName="DejaVu Sans" evaluationTime="Report" hTextAlign="Left">
+			<expression><![CDATA[" из " + $V{PAGE_NUMBER}]]></expression>
+			<property name="com.jaspersoft.studio.unit.y" value="px"/>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<property name="com.jaspersoft.studio.unit.height" value="px"/>
+	</pageFooter>
+	<summary height="42" splitType="Stretch"/>
+</jasperReport>

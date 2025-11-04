@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        <th:block th:if="${!isUpdate}">Новое Распределение</th:block>
+        <th:block th:if="${isUpdate}">Обновление Распределения</th:block>
+    </title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <style>
+        /* Уменьшаем высоту строк и ячеек */
+        table.table tr {
+            height: 26px !important; /* Высота строки */
+        }
+
+        table.table th,
+        table.table td {
+            height: 24px !important; /* Высота ячеек */
+            padding: 4px 10px !important; /* Уменьшаем отступы (2px сверху/снизу, 5px слева/справа) */
+            box-sizing: border-box;
+        }
+
+        /* Уменьшаем ширину левой колонки */
+        table.table th {
+            width: 180px; /* Фиксированная ширина для левой колонки */
+            white-space: nowrap; /* Запрещаем перенос текста */
+        }
+
+        /* Уменьшаем высоту и ширину input */
+        table.table input {
+            height: 22px !important; /* Высота input */
+            width: 120% !important; /* Ширина input (90% от доступной ширины) */
+            padding: 0 5px !important; /* Уменьшаем padding */
+            margin: 0 !important; /* Убираем margin */
+            font-size: 14px !important; /* Уменьшаем размер шрифта */
+            line-height: 1 !important; /* Убираем лишний межстрочный интервал */
+            box-sizing: border-box;
+        }
+
+        /* Уменьшаем высоту div внутри td */
+        table.table td div {
+            height: 20px !important; /* Высота div */
+            line-height: 20px !important; /* Центрируем текст по вертикали */
+            font-size: 14px !important; /* Уменьшаем размер шрифта */
+            box-sizing: border-box;
+        }
+
+        /* Убираем лишние отступы у таблицы */
+        table.table {
+            margin-bottom: 10px !important;
+            width: auto; /* Автоматическая ширина таблицы */
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>
+        <th:block th:if="${!isUpdate}">Новое Распределение</th:block>
+        <th:block th:if="${isUpdate}">Обновление Распределения</th:block>
+    </h2>
+    <h5>
+        <th:block th:text="${carrierName} != null ? 'Перевозчик :' + ${carrierName} : 'Водители Всех Перевозчиков'"></th:block>
+    </h5>
+    <td>
+        <form th:action="${isUpdate} ? '/tc_contdrses/update/' + ${contdrs.id} : '/tc_contdrses'" th:object="${contdrs}" method="post">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Поле</th>
+                    <th>Значение</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                <tr>
+                    <th>Номер DRS</th>
+                    <td><div th:text="${contdrs.id}"></div></td>
+                </tr>
+
+                <tr>
+                    <th>Дата и время</th>
+                    <td><div th:text="${#temporals.format(contdrs.sale.fromDate, 'dd.MM.yyyy')} +
+                    ' - ' + ${#temporals.format(contdrs.sale.fromTime, 'HH:mm')}"></div></td>
+                </tr>
+
+                <tr>
+                    <th>(КТК) Дата с...</th>
+                    <td><div th:text="${#temporals.format(contdrs.dateFrom, 'dd.MM.yyyy')}"></div></td>
+                </tr>
+
+                <tr>
+                    <th>(КТК) Дата по...</th>
+                    <td><div th:text="${#temporals.format(contdrs.dateTo, 'dd.MM.yyyy')}"></div></td>
+                </tr>
+
+                <tr>
+                    <th>Сток КТК</th>
+                    <td><div th:text="${contdrs.sale.contowner.name}"></div></td>
+                </tr>
+
+<!--            Выбор Терминала выдачи КТК-->
+                <tr>
+                    <th>Терминал выдачи</th>
+                    <td>
+                        <select name="fromTerminal" id="fromTerminal" th:field="*{fromTerminal}">
+                            <option th:value=null
+                                    th:selected="${contdrs.fromTerminal == null}">Не выбран</option>
+                            <option
+                                    th:each="fromTerminal : ${fTerminals}"
+                                    th:value="${fromTerminal.id}"
+                                    th:text="${fromTerminal.shortName}"
+                                    th:selected="${contdrs.fromTerminal?.id == fromTerminal.id}">
+                            </option>
+                        </select>
+                        <small class="form-text text-muted">(Терминал выд. КТК)</small>
+                    </td>
+                </tr>
+
+<!--            Релиз-->
+                <tr>
+                    <th>Релиз</th>
+                    <td><div th:text="${contdrs.relis}"></div></td>
+                </tr>
+<!--            Водитель-->
+                <tr>
+                    <th>Водитель</th>
+                    <td>
+                        <select name="driver" id="driver" th:field="*{driver}">
+                            <option th:value=null
+                                    th:selected="${contdrs.driver == null}">Не выбран</option>
+                            <option
+                                    th:each="driver: ${drivers}"
+                                    th:value="${driver.id}"
+                                    th:text="${driver.surename} + ' '
+                                    + ${driver.name}"
+                                    th:selected="${contdrs.driver?.id == driver.id}">
+                            </option>
+                        </select>
+                        <small class="form-text text-muted">(Водитель - Исп.заявки)</small>
+                    </td>
+                </tr>
+
+
+
+<!--            Адрес Погрузки/Выгрузки-->
+                <tr>
+                    <th>Адрес пог/выг</th>
+                    <td><div th:text="${contdrs.sale.fromAddress}"></div></td>
+                </tr>
+
+<!--            Выбор Терминала сдачи КТК-->
+                <tr>
+                    <th>Терминал сдачи</th>
+                    <td>
+                        <select name="toTerminal" id="toTerminal" th:field="*{toTerminal}">
+                            <option th:value=null
+                                    th:selected="${contdrs.toTerminal == null}">Не выбран</option>
+                            <option
+                                    th:each="terminal: ${tTerminals}"
+                                    th:value="${terminal.id}"
+                                    th:text="${terminal.shortName}"
+                                    th:selected="${contdrs.toTerminal?.id == terminal.id}">
+                            </option>
+                        </select>
+                        <small class="form-text text-muted">(Терминал сд. КТК)</small>
+                    </td>
+                </tr>
+
+                </tbody>
+            </table>
+            <button type="submit" class="btn btn-primary">Сохранить</button>
+            || <a href="/tc_contdrses" class="btn btn-secondary">Отмена</a>
+        </form>
+    </div>
+</div>
+</body>
+</html>

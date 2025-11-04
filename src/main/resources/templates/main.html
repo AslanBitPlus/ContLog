@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ru"
+      xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+    <meta charset="UTF-8">
+    <title th:text="'Container Logistic [' + ${curUserrole} + ']'"></title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+          crossorigin="anonymous">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+<!--        ROLE_SUPERADMIN-->
+        <nav class="nav" th:if="${menu == 1}">
+            <a href="admin/users" class="nav-link">Пользователи</a>
+            <a href="contowners" class="nav-link">Владельцы КТК</a>
+            <a href="containers" class="nav-link">Контейнеры</a>
+            <a href="terminals" class="nav-link">Терминалы</a>
+            <a href="carriers" class="nav-link">Транс-компании</a>
+            <a href="drivers" class="nav-link">Водители</a>
+            <a href="admin/profile" class="nav-link">Настройки профиля</a>
+        </nav>
+<!--        ROLE_USER-->
+        <nav class="nav" th:if="${menu == 2}">
+            <a href="user_about" class="nav-link">О Программе ContLog</a>
+            <a href="user_service" class="nav-link">Услуги</a>
+            <a href="user_contacts" class="nav-link">Контакты</a>
+            <a href="profile" class="nav-link">Настройки профиля</a>
+        </nav>
+<!--        ROLE_SI_MANAGER-->
+        <nav class="nav" th:if="${menu == 3}">
+            <a href="si_sales" class="nav-link">Заявки</a>
+            <a href="profile" class="nav-link">Настройки профиля</a>
+        </nav>
+<!--        ROLE_SO_MANAGER-->
+        <nav class="nav" th:if="${menu == 4}">
+            <a href="so_contdrses" class="nav-link">Распределение Заявок</a>
+            <a href="so_carrier" class="nav-link">Тр/компании</a>
+            <a href="profile" class="nav-link">Настройки профиля</a>
+        </nav>
+<!--        ROLE_CO_MANAGER-->
+        <nav class="nav" th:if="${menu == 5}">
+<!--        Контейнера (только свои)-->
+            <a href="co_containers" class="nav-link">КТК</a>
+            <a href="co_contdrses" class="nav-link">Заявки</a>
+            <a href="profile" class="nav-link">Настройки профиля</a>
+        </nav>
+<!--        ROLE_TR_MANAGER-->
+        <nav class="nav" th:if="${menu == 6}">
+            <a href="tr_containers/all" class="nav-link">КТК</a>
+            <a href="tr_contdrses_in" class="nav-link">Прием</a>
+            <a href="tr_contdrses_out" class="nav-link">Выдача</a>
+            <a href="profile" class="nav-link">Настройки профиля</a>
+        </nav>
+<!--        ROLE_TC_MANAGER-->
+        <nav class="nav" th:if="${menu == 7}">
+            <a href="tc_contdrses" class="nav-link">Заявки</a>
+            <a href="terminals" class="nav-link">Терминалы</a>
+            <a href="tc_drivers" class="nav-link">Водители</a>
+            <a href="tc_service" class="nav-link">Сервис</a>
+            <a href="profile" class="nav-link">Настройки профиля</a>
+        </nav>
+<!--        ROLE_DRIVER-->
+        <nav class="nav" th:if="${menu == 8}">
+            <a href="dr_contdrses/today" class="nav-link">Заявки</a>
+            <a href="terminals" class="nav-link">Терминалы</a>
+<!--            <a href="dr_service" class="nav-link">Сервис</a>-->
+            <a href="profile" class="nav-link">Настройки профиля</a>
+        </nav>
+
+        <a class="navbar-brand" th:href="@{/logout}">Выход из системы</a>
+
+    </div>
+</nav>
+<br /><br />
+
+<section class="hero">
+    <div class="container">
+
+        <br><br><br><br><br><br>
+        <h1 class="text-center">ContLog</h1>
+        <p class="text-center">Организация контейнерных перевозок автомобильным транспортом.</p>
+        <p class="text-center" th:text="'Добро пожаловать: ' + ${curUserName}"></p>
+        <p class="text-center" th:text="'Ваши права: ' + ${curUserrole}"></p>
+
+    </div>
+</section>
+
+
+</body>
+</html>

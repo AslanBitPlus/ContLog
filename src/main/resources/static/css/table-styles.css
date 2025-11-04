@@ -1,0 +1,42 @@
+/* Уменьшаем высоту строк и ячеек */
+        #compact-table tr {
+            height: 26px !important; /* Высота строки */
+        }
+
+        #compact-table th,
+        #compact-table td {
+            height: 24px !important; /* Высота ячеек */
+            padding: 4px 10px !important; /* Уменьшаем отступы (2px сверху/снизу, 5px слева/справа) */
+            box-sizing: border-box;
+        }
+
+        /* Уменьшаем ширину левой колонки */
+        #compact-table th {
+            width: 180px; /* Фиксированная ширина для левой колонки */
+            white-space: nowrap; /* Запрещаем перенос текста */
+        }
+
+        /* Уменьшаем высоту и ширину input */
+        #compact-table input {
+            height: 22px !important; /* Высота input */
+            width: 120% !important; /* Ширина input (90% от доступной ширины) */
+            padding: 0 5px !important; /* Уменьшаем padding */
+            margin: 0 !important; /* Убираем margin */
+            font-size: 14px !important; /* Уменьшаем размер шрифта */
+            line-height: 1 !important; /* Убираем лишний межстрочный интервал */
+            box-sizing: border-box;
+        }
+
+        /* Уменьшаем высоту div внутри td */
+        #compact-table td div {
+            height: 20px !important; /* Высота div */
+            line-height: 20px !important; /* Центрируем текст по вертикали */
+            font-size: 14px !important; /* Уменьшаем размер шрифта */
+            box-sizing: border-box;
+        }
+
+        /* Убираем лишние отступы у таблицы */
+        #compact-table {
+            margin-bottom: 10px !important;
+            width: auto; /* Автоматическая ширина таблицы */
+        }

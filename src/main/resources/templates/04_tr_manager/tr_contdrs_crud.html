@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:if="${inOut == 'in'}">Прием КТК</title>
+    <title th:if="${inOut == 'out'}">Выдача КТК</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <style>
+        /* Уменьшаем высоту строк и ячеек */
+        table.table tr {
+            height: 26px !important; /* Высота строки */
+        }
+
+        table.table th,
+        table.table td {
+            height: 24px !important; /* Высота ячеек */
+            padding: 4px 10px !important; /* Уменьшаем отступы (2px сверху/снизу, 5px слева/справа) */
+            box-sizing: border-box;
+        }
+
+        /* Уменьшаем ширину левой колонки */
+        table.table th {
+            width: 180px; /* Фиксированная ширина для левой колонки */
+            white-space: nowrap; /* Запрещаем перенос текста */
+        }
+
+        /* Уменьшаем высоту и ширину input */
+        table.table input {
+            height: 22px !important; /* Высота input */
+            width: 120% !important; /* Ширина input (90% от доступной ширины) */
+            padding: 0 5px !important; /* Уменьшаем padding */
+            margin: 0 !important; /* Убираем margin */
+            font-size: 14px !important; /* Уменьшаем размер шрифта */
+            line-height: 1 !important; /* Убираем лишний межстрочный интервал */
+            box-sizing: border-box;
+        }
+
+        /* Уменьшаем высоту div внутри td */
+        table.table td div {
+            height: 20px !important; /* Высота div */
+            line-height: 20px !important; /* Центрируем текст по вертикали */
+            font-size: 14px !important; /* Уменьшаем размер шрифта */
+            box-sizing: border-box;
+        }
+
+        /* Убираем лишние отступы у таблицы */
+        table.table {
+            margin-bottom: 10px !important;
+            width: auto; /* Автоматическая ширина таблицы */
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>
+        <th:block th:if="${inOut == 'in'}">Прием КТК</th:block>
+        <th:block th:if="${inOut == 'out'}">Выдача КТК</th:block>
+    </h2>
+    <h5>
+        <!-- Терминал -->
+        <th:block th:text="${inOut} == 'in' ? 'Терминал приема КТК: ' + ${contdrs.toTerminal.shortName} : 'Терминал выдачи КТК: ' + ${contdrs.fromTerminal.shortName}"></th:block>
+    </h5>
+    <h6>
+        <!-- Сток -->
+        <th:block th:text="${contdrs.sale.contowner} != null ? 'Владелец КТК: ' + ${contdrs.sale.contowner.name} : 'Владелец КТК: НЕ определен'"></th:block><br>
+        <!-- Перевозчик -->
+        <th:block th:text="${contdrs.carrier} != null ? 'Перевозчик: ' + ${contdrs.carrier.name} : 'Перевозчик: НЕ определен'"></th:block><br>
+        <!-- Водитель -->
+        <th:block th:text="${contdrs.driver} != null ? 'Водитель: ' + ${contdrs.driver.surename} + ' ' + ${contdrs.driver.name} : 'Водитель: НЕ определен'"></th:block><br>
+        <!-- Релиз -->
+        <th:block th:text="${contdrs.relis} != null ? 'Релиз: ' + ${contdrs.relis} : 'Нет Релиза'"></th:block>
+
+    </h6>
+    <td>
+<!--        <form th:action="${isUpdate} ? '/tr_contdrses_in/update/' + ${contdrs.id} : '/tr_contdrses_in'" th:object="${contdrs}" method="post">-->
+        <form th:action="${isUpdate} ?
+                (${inOut == 'in'} ? '/tr_contdrses_in/update/' + ${contdrs.id} : '/tr_contdrses_out/update/' + ${contdrs.id}) :
+                (${inOut == 'in'} ? '/tr_contdrses_in' : '/tr_contdrses_out')"
+              th:object="${contdrs}"
+              method="post">
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Поле</th>
+                    <th>Значение</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                <tr>
+                    <th>Номер Заявки</th>
+                    <td><div th:text="${contdrs.sale.id} + '-' + ${contdrs.id}"></div></td>
+                </tr>
+
+<!--                <tr>-->
+<!--                    <th>Дата и время</th>-->
+<!--                    <td><div th:text="${#temporals.format(contdrs.sale.fromDate, 'dd.MM.yyyy')} +-->
+<!--                    ' - ' + ${#temporals.format(contdrs.sale.fromTime, 'HH:mm')}"></div></td>-->
+<!--                </tr>-->
+
+                <tr th:if="${inOut == 'out'}">
+                    <th>(КТК) Выдача с...</th>
+                    <td><div th:text="${#temporals.format(contdrs.dateFrom, 'dd.MM.yyyy')}"></div></td>
+                </tr>
+
+                <tr th:if="${inOut == 'out'}">
+                    <th>(КТК) Выдача по...</th>
+                    <td><div th:text="${#temporals.format(contdrs.dateTo, 'dd.MM.yyyy')}"></div></td>
+                </tr>
+
+<!--                <tr>-->
+<!--                    <th>Сток КТК</th>-->
+<!--                    <td><div th:text="${contdrs.sale.contowner.name}"></div></td>-->
+<!--                </tr>-->
+
+<!--            Выбор Терминала выдачи КТК-->
+<!--                <tr>-->
+<!--                    <th>Терминал выдачи</th>-->
+<!--                    <td>-->
+<!--                        <select name="fromTerminal" id="fromTerminal" th:field="*{fromTerminal}">-->
+<!--                            <option th:value=null-->
+<!--                                    th:selected="${contdrs.fromTerminal == null}">Не выбран</option>-->
+<!--                            <option-->
+<!--                                    th:each="fromTerminal : ${fTerminals}"-->
+<!--                                    th:value="${fromTerminal.id}"-->
+<!--                                    th:text="${fromTerminal.shortName}"-->
+<!--                                    th:selected="${contdrs.fromTerminal?.id == fromTerminal.id}">-->
+<!--                            </option>-->
+<!--                        </select>-->
+<!--                        <small class="form-text text-muted">(Терминал выд. КТК)</small>-->
+<!--                    </td>-->
+<!--                </tr>-->
+
+<!--            Релиз-->
+                <tr>
+                    <th>Релиз</th>
+                    <td><div th:text="${contdrs.relis}"></div></td>
+                </tr>
+
+<!--            Контейнер -->
+                <tr th:if="${inOut == 'in'}">
+                    <th>Контейнер</th>
+                    <td><div th:text="${contdrs.sale.container} != null ?
+                    ${contdrs.sale.container.code} + ' ' + ${contdrs.sale.container.number} : 'НЕ определен'"></div></td>
+                </tr>
+
+<!--            Выбор КТК для Выдачи -->
+                <tr th:if="${inOut == 'out'}">
+                    <th>Контейнер</th>
+                    <td>
+                        <select name="sale.container.id" id="sale.container.id" th:field="*{sale.container.id}">
+                            <option th:value=0
+                                    th:selected="${contdrs.sale.container == null}">Не выбран</option>
+                            <option
+                                    th:each="container : ${containers}"
+                                    th:value="${container.id}"
+                                    th:text="${container.code} + ' ' + ${container.number}"
+                                    th:selected="${contdrs.sale.container?.id == container.id}">
+                            </option>
+                        </select>
+                        <small class="form-text text-muted">(Выбор КТК)</small>
+                    </td>
+                </tr>
+
+                </tbody>
+            </table>
+            <td th:if="${inOut == 'in'}">
+            <button type="submit" class="btn btn-primary">Сохранить</button>
+            || <a href="/tr_contdrses_in" class="btn btn-secondary">Отмена</a>
+            </td>
+            <td th:if="${inOut == 'out'}">
+                <button type="submit" class="btn btn-primary">Сохранить</button>
+                || <a href="/tr_contdrses_out" class="btn btn-secondary">Отмена</a>
+            </td>
+
+        </form>
+    </div>
+</div>
+</body>
+</html>

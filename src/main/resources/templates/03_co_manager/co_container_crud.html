@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        <th:block th:if="${!isUpdate}">Новый Контейнер</th:block>
+        <th:block th:if="${isUpdate}">Обновление данных контейнера</th:block>
+    </title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <style>
+        /* Уменьшаем высоту строк и ячеек */
+        table.table tr {
+            height: 26px !important; /* Высота строки */
+        }
+
+        table.table th,
+        table.table td {
+            height: 24px !important; /* Высота ячеек */
+            padding: 4px 10px !important; /* Уменьшаем отступы (2px сверху/снизу, 5px слева/справа) */
+            box-sizing: border-box;
+        }
+
+        /* Уменьшаем ширину левой колонки */
+        table.table th {
+            width: 180px; /* Фиксированная ширина для левой колонки */
+            white-space: nowrap; /* Запрещаем перенос текста */
+        }
+
+        /* Уменьшаем высоту и ширину input */
+        table.table input {
+            height: 22px !important; /* Высота input */
+            width: 120% !important; /* Ширина input (90% от доступной ширины) */
+            padding: 0 5px !important; /* Уменьшаем padding */
+            margin: 0 !important; /* Убираем margin */
+            font-size: 14px !important; /* Уменьшаем размер шрифта */
+            line-height: 1 !important; /* Убираем лишний межстрочный интервал */
+            box-sizing: border-box;
+        }
+
+        /* Уменьшаем высоту div внутри td */
+        table.table td div {
+            height: 20px !important; /* Высота div */
+            line-height: 20px !important; /* Центрируем текст по вертикали */
+            font-size: 14px !important; /* Уменьшаем размер шрифта */
+            box-sizing: border-box;
+        }
+
+        /* Убираем лишние отступы у таблицы */
+        table.table {
+            margin-bottom: 10px !important;
+            width: auto; /* Автоматическая ширина таблицы */
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>
+        <th:block th:if="${!isUpdate}">Новый контейнер</th:block>
+        <th:block th:if="${isUpdate}">Обновление данных контейнера</th:block>
+    </h2>
+    <h5>
+        <th:block th:text="'Владелец КТК: ' +${contOwnerName}"></th:block>
+    </h5>
+<div>
+
+    <form th:action="${isUpdate} ? '/co_containers/update/' + ${container.id} : '/co_containers/create'" th:object="${container}" method="post">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Поле</th>
+                <th>Значение</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr th:if="${isUpdate}">
+                    <th>ID</th>
+                    <td><div th:text="${container.id}"></div></td>
+                </tr>
+                <tr>
+<!--                    <th>Владелец (Сток)</th>-->
+<!--                    <td><input type="text" th:field="*{contowner}" /></td>-->
+
+<!--                    <div class="form-group mb-2">-->
+<!--                        <label>Выбери владельца (Сток):</label>-->
+<!--                        <select name="contowner.name">-->
+<!--                        Предусмотреть cowner = "" при вводе нового КТК-->
+<!--                            <option th:value="${cowner}">Стоки для выбора</option>-->
+
+<!--                            <option th:each="contowner : ${contowners}"-->
+<!--                                th:value="${contowner.name}"-->
+<!--                                th:text="${contowner.name}"></option>-->
+<!--                        </select>-->
+<!--                    </div>-->
+                <tr>
+                    <th>Владелец КТК (Сток)</th>
+                    <td><div th:text="${contOwnerName}"></div></td>
+                </tr>
+                </tr>
+                <tr>
+                    <th>Код КТК</th>
+                    <td><input type="text" th:field="*{code}" required/></td>
+                </tr>
+                <tr>
+                    <th>Номер</th>
+                    <td><input type="text" th:field="*{number}" required/></td>
+                </tr>
+                <tr>
+                    <th>Тип КТК</th>
+                    <td><input type="text" th:field="*{type}" required/></td>
+                </tr>
+                <tr>
+                    <th>Вес тары</th>
+                    <td><input type="text" th:field="*{weighttare}" /></td>
+                </tr>
+                <tr>
+                    <th>Макс. Вес</th>
+                    <td><input type="text" th:field="*{maxweight}" /></td>
+                </tr>
+                <tr>
+                    <th>Место КТК</th>
+                    <td>
+                        <select type="text" id="place" name="drs" th:field="*{place}"
+                                maxlength="1" pattern="[tbo]">
+                            <option value="b">Ремонт</option>
+                            <option value="o">Продажа</option>
+                            <option value="t">Терминал</option>
+                        </select>
+                        <small class="form-text text-muted">(Рем, Прод, Терм)</small>
+                    </td>
+                </tr>
+<!--                ==========================================================-->
+<!--                <tr>-->
+<!--                    <th>Id Места</th>-->
+<!--                    <td><input type="number" th:field="*{placeId}" /></td>-->
+<!--                </tr>-->
+<!--                ==========================================================-->
+                <tr>
+                    <th>Терминал хран. КТК</th>
+                    <td>
+                        <select name="placeId" id="placeId" th:field="*{placeId}">
+                            <option th:value=null
+                                    th:selected="${container.placeId == null}">Не выбран</option>
+                            <option
+                                    th:each="terminal : ${terminals}"
+                                    th:value="${terminal.id}"
+                                    th:text="${terminal.shortName}"
+                                    th:selected="${container.placeId == terminal.id}">
+                            </option>
+                        </select>
+                        <small class="form-text text-muted">(Терминал хран. КТК)</small>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+            <button type="submit" class="btn btn-primary">Сохранить</button>
+            || <a href="/co_containers" class="btn btn-secondary">Отмена</a>
+    </form>
+</div>
+</div>
+</body>
+</html>

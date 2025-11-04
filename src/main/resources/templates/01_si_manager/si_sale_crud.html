@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        <th:block th:if="${!isUpdate}">Новая Заявка</th:block>
+        <th:block th:if="${isUpdate}">Обновление Заявки</th:block>
+    </title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <style>
+        /* Уменьшаем высоту строк и ячеек */
+        table.table tr {
+            height: 26px !important; /* Высота строки */
+        }
+
+        table.table th,
+        table.table td {
+            height: 24px !important; /* Высота ячеек */
+            padding: 4px 10px !important; /* Уменьшаем отступы (2px сверху/снизу, 5px слева/справа) */
+            box-sizing: border-box;
+        }
+
+        /* Уменьшаем ширину левой колонки */
+        table.table th {
+            width: 180px; /* Фиксированная ширина для левой колонки */
+            white-space: nowrap; /* Запрещаем перенос текста */
+        }
+
+        /* Уменьшаем высоту и ширину input */
+        table.table input {
+            height: 22px !important; /* Высота input */
+            width: 120% !important; /* Ширина input (90% от доступной ширины) */
+            padding: 0 5px !important; /* Уменьшаем padding */
+            margin: 0 !important; /* Убираем margin */
+            font-size: 14px !important; /* Уменьшаем размер шрифта */
+            line-height: 1 !important; /* Убираем лишний межстрочный интервал */
+            box-sizing: border-box;
+        }
+
+        /* Уменьшаем высоту div внутри td */
+        table.table td div {
+            height: 20px !important; /* Высота div */
+            line-height: 20px !important; /* Центрируем текст по вертикали */
+            font-size: 14px !important; /* Уменьшаем размер шрифта */
+            box-sizing: border-box;
+        }
+
+        /* Убираем лишние отступы у таблицы */
+        table.table {
+            margin-bottom: 10px !important;
+            width: auto; /* Автоматическая ширина таблицы */
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>
+        <th:block th:if="${!isUpdate}">Новая Заявка</th:block>
+        <th:block th:if="${isUpdate}">Обновление Заявки</th:block>
+    </h2>
+    <td>
+        <form th:action="${isUpdate} ? '/si_sales/update/' + ${sale.id} : '/si_sales/create'" th:object="${sale}" method="post">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Поле</th>
+                    <th>Значение</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:if="${isUpdate}">
+                    <th>ID</th>
+                    <td><div th:text="${sale.id}"></div></td>
+                </tr>
+                <tr th:if="${isUpdate}">
+                    <th>Дата рег-ции</th>
+                    <td><div th:text="${#temporals.format(sale.creationDateTime, 'dd.MM.yyyy HH:mm')}" step="60"></div></td>
+                </tr>
+                <tr th:if="${!isUpdate}">
+                    <th>Дата рег-ции</th>
+                    <td><input type="datetime" id="creationDateTime" name="creationDateTime"
+                               th:value="${creationDateTime}">
+                        <small class="form-text text-muted">Формат: дд.мм.гггг чч:мм (например, 09.05.2025 08:00)</small>
+                    </td>
+                </tr>
+
+<!--                Выбор Стока (ContOwner)-->
+                <tr>
+                    <th>Сток</th>
+                    <td>
+                        <select name="contowner" id="contowner" th:field="*{contowner}">
+                            <option th:value=null
+                                    th:selected="${sale.contowner == null}">Не выбран</option>
+                            <option
+                                    th:each="contowner : ${contowners}"
+                                    th:value="${contowner.id}"
+                                    th:text="${contowner.name}"
+                                    th:selected="${sale.contowner?.id == contowner.id}">
+                            </option>
+                        </select>
+                        <small class="form-text text-muted">(Сток для выбора КТК)</small>
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>Дата начала</th>
+                    <td><input type="date" id="fromDate" name="fromDate" th:value="${fromDate}">
+                        <small class="form-text text-muted">Формат: дд.мм.гггг (например, 09.05.2025)</small>
+                    </td>
+
+                </tr>
+                <tr>
+                    <th>Start</th>
+                    <td><input type="time" th:field="*{fromTime}" id="fromTime"
+                               pattern="[0-9]{2}:[0-9]{2}" placeholder="HH:mm" step="60">
+                        <small class="form-text text-muted">Формат: чч:мм (например, 08:00)</small>
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>Адрес пог/выг</th>
+                    <td><input type="text" th:field="*{fromAddress}" /></td>
+                </tr>
+                <tr>
+                    <th>Дата заверщения</th>
+                    <td><input type="date" id="toDate" name="toDate" th:value="${toDate}"></td>
+                </tr>
+                <tr>
+                    <th>Finish</th>
+                    <td><input type="time" th:field="*{toTime}" id="toTime"
+                               pattern="[0-9]{2}:[0-9]{2}" placeholder="HH:mm" step="60"></td>
+                </tr>
+                <tr>
+                    <th>Адрес выг/пог</th>
+                    <td><input type="text" th:field="*{toAddress}" /></td>
+                </tr>
+                <tr>
+                    <th>Менеджер</th>
+                    <td><input type="text" th:field="*{manager}" /></td>
+                </tr>
+
+<!--                // Нет необходимости отображенияния следующих блоков-->
+<!--                // т.к., при (Выаче КТК) на терминале, заполняется поле Выполняется-->
+<!--                // при (Сдаче КТК) на терминал, заполняется поле Завершен-->
+
+<!--                <tr th:if="${isUpdate}">-->
+<!--                    <th>Выполняется</th>-->
+<!--                    <td th:if="${isUpdate}" class="mb-3 form-check" style="text-align: left;">-->
+<!--                        <input type="checkbox" class="form-check-input" id="started" th:field="*{started}">-->
+<!--                    </td>-->
+<!--                </tr>-->
+
+<!--                <tr th:if="${isUpdate}">-->
+<!--                    <th>Завершен</th>-->
+<!--                    <td th:if="${isUpdate}" class="mb-3 form-check">-->
+<!--                        <input type="checkbox" class="form-check-input" id="finished" th:field="*{finished}">-->
+<!--                    </td>-->
+<!--                </tr>-->
+
+                </tbody>
+            </table>
+            <button type="submit" class="btn btn-primary">Сохранить</button>
+            || <a href="/si_sales" class="btn btn-secondary">Отмена</a>
+        </form>
+    </div>
+</div>
+</body>
+</html>

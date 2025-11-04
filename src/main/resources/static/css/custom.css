@@ -1,0 +1,30 @@
+/* custom.css */
+body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.content {
+    padding: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-primary:hover {
+    background-color: #0069d9;
+    border-color: #0062cc;
+}
+
+.sort-asc::after {
+    content: " ⇧";
+}
+
+.sort-desc::after {
+    content: " ⇩";
+}

@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Сервис</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
+    <script src="js/st_script.js" defer></script>
+
+    <style>
+        /* Уменьшаем высоту строк и ячеек */
+        table.table tr {
+            height: 26px !important; /* Высота строки */
+        }
+
+        table.table th,
+        table.table td {
+            height: 24px !important; /* Высота ячеек */
+            padding: 4px 10px !important; /* Уменьшаем отступы (2px сверху/снизу, 5px слева/справа) */
+            box-sizing: border-box;
+        }
+    </style>
+
+</head>
+<body>
+
+<div class="container">
+    <h2>Сервис</h2>
+    <h5>
+        <th:block th:text="'Владелец КТК: ' +${contOwnerName}"></th:block>
+    </h5>
+    <form class="form-inline mb-3">
+        <input class="form-control mr-sm-2" type="text" id="searchInput" placeholder="Поиск заявки" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="button">Поиск</button>
+    </form>
+    <a href="/main">Отчет по перевозкам за Месяц</a> | <a href="/main">Отчет по перевозкам за Год</a> | <a href="/main">Главная страница</a>
+
+
+</div>
+
+
+</body>
+</html>

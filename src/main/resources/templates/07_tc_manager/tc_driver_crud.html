@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        <th:block th:if="${!isUpdate}">Новый водитель</th:block>
+        <th:block th:if="${isUpdate}">Обновление данных водителя</th:block>
+    </title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <style>
+        /* Уменьшаем высоту строк и ячеек */
+        table.table tr {
+            height: 26px !important; /* Высота строки */
+        }
+
+        table.table th,
+        table.table td {
+            height: 24px !important; /* Высота ячеек */
+            padding: 4px 10px !important; /* Уменьшаем отступы (2px сверху/снизу, 5px слева/справа) */
+            box-sizing: border-box;
+        }
+
+        /* Уменьшаем ширину левой колонки */
+        table.table th {
+            width: 180px; /* Фиксированная ширина для левой колонки */
+            white-space: nowrap; /* Запрещаем перенос текста */
+        }
+
+        /* Уменьшаем высоту и ширину input */
+        table.table input {
+            height: 22px !important; /* Высота input */
+            width: 120% !important; /* Ширина input (90% от доступной ширины) */
+            padding: 0 5px !important; /* Уменьшаем padding */
+            margin: 0 !important; /* Убираем margin */
+            font-size: 14px !important; /* Уменьшаем размер шрифта */
+            line-height: 1 !important; /* Убираем лишний межстрочный интервал */
+            box-sizing: border-box;
+        }
+
+        /* Уменьшаем высоту div внутри td */
+        table.table td div {
+            height: 20px !important; /* Высота div */
+            line-height: 20px !important; /* Центрируем текст по вертикали */
+            font-size: 14px !important; /* Уменьшаем размер шрифта */
+            box-sizing: border-box;
+        }
+
+        /* Убираем лишние отступы у таблицы */
+        table.table {
+            margin-bottom: 10px !important;
+            width: auto; /* Автоматическая ширина таблицы */
+        }
+    </style>
+</head>
+<body>
+
+
+<div class="container">
+    <h2>
+        <th:block th:if="${!isUpdate}">Новый водитель</th:block>
+        <th:block th:if="${isUpdate}">Обновление данных водителя</th:block>
+    </h2>
+    <h5>
+        <th:block th:text="${userCod} != null ? 'Перевозчик :' + ${carrierName} : 'Водители Всех Перевозчиков'"></th:block>
+    </h5>
+<div>
+    <form th:action="${isUpdate} ? '/tc_drivers/update/' + ${driver.id} : '/tc_drivers/create'" th:object="${driver}" method="post">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Поле</th>
+                <th>Значение</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:if="${isUpdate}">
+                <th>ID</th>
+                <td><div th:text="${driver.id}"></div></td>
+            </tr>
+
+<!--            <tr>-->
+<!--                <th>Перевозчик</th>-->
+<!--                <td th:text = "${carrierName}"></td>-->
+<!--            </tr>-->
+
+            <tr>
+                <th>Фамилия</th>
+                <td><input type="text" th:field="*{surename}" /></td>
+            </tr>
+            <tr>
+                <th>Имя</th>
+                <td><input type="text" th:field="*{name}" /></td>
+            </tr>
+            <tr>
+                <th>Отчество</th>
+                <td><input type="text" th:field="*{patronymic}" /></td>
+            </tr>
+            <tr>
+                <th>Тягач (марка)</th>
+                <td><input type="text" th:field="*{car}" /></td>
+            </tr>
+            <tr>
+                <th>Номер тягача</th>
+                <td><input type="text" th:field="*{carnum}" /></td>
+            </tr>
+            <tr>
+                <th>Прицеп</th>
+                <td><input type="text" th:field="*{trailer}" /></td>
+            </tr>
+            <tr>
+                <th>Номер прицепа</th>
+                <td><input type="text" th:field="*{trailernum}" /></td>
+            </tr>
+            </tbody>
+        </table>
+        <button type="submit" class="btn btn-primary">Сохранить</button>
+        || <a href="/tc_drivers" class="btn btn-secondary">Отмена</a>
+    </form>
+</div>
+</div>
+</body>
+</html>
