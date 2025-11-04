@@ -4,6 +4,7 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 SQL.md
+Readme.md
 SQL_Gen_Diag.png
 Test_1.pdf
 
