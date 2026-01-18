@@ -1,4 +1,4 @@
--- Содание БД 'cont'
+-- Содание БД 'cl'
 CREATE DATABASE IF NOT EXISTS cont;
 USE cont;
 
